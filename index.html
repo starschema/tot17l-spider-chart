@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/ >
+		<title>Smoothed D3.js Radar Chart</title>
+
+		<!-- Google fonts -->
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+
+		<!-- D3.js -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
+		<!-- Tableau JSAPI -->
+		<!-- IMPORTANT! Replace tableau.server to your Tableau server domain -->
+		<script src="http://tableau.server/javascripts/api/tableau-2.1.1.min.js"></script>
+	
+		<script src="spiderData.js"></script>
+		<script src="tableauLib.js"></script>
+
+		<style>
+			body {
+				font-family: 'Open Sans', sans-serif;
+				font-size: 11px;
+				font-weight: 300;
+				fill: #242424;
+				text-align: center;
+				/*text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff, 0 -1px 0 #fff;*/
+				color: #e6e6e6;
+				cursor: default;
+				background: #021617;
+				overflow: hidden;
+			}
+			
+			.legend {
+				font-family: 'Raleway', sans-serif;
+				fill: #333333;
+			}
+			
+			.tooltip {
+				fill: #333333;
+			}
+
+      .radarChartITunes, .radarChartSpotify, .radarChartOthers {
+        position: relative;
+      }
+
+			.label {
+				position: absolute;
+				font-size: 1.4rem;
+        right: 23%;
+				margin-top: 0;
+			}
+		</style>
+	
+	</head>
+	<body onload="initUnderlyingData();">
+
+		<h1 id="albumTitle"></h1>
+    <div class="radarChartSpotify" style="display: inline-block;"><span class="label">Spotify</span></div> 
+    <div class="radarChartITunes" style="display: inline-block;"><span class="label">iTunes</span></div>
+    <div class="radarChartOthers" style="display: inline-block;"><span class="label">Others</span></div>
+		
+		<script src="radarChart.js"></script>	
+		<script>
+      
+      /* Radar chart design created by Nadieh Bremer - VisualCinnamon.com */
+      
+			////////////////////////////////////////////////////////////// 
+			//////////////////////// Set-Up ////////////////////////////// 
+			////////////////////////////////////////////////////////////// 
+
+			var margin = {top: 50, right: 125, bottom: 30, left: 125},
+				width = Math.min(700, window.innerWidth - 10) - margin.left - margin.right,
+				height = Math.min(width, window.innerHeight - margin.top - margin.bottom - 20);
+					
+			////////////////////////////////////////////////////////////// 
+			//////////////////// Draw the Chart ////////////////////////// 
+			////////////////////////////////////////////////////////////// 
+
+			var color = d3.scale.ordinal()
+				.range(["#EDC951","#CC333F","#00A0B0"]);
+				
+			var radarChartOptions = {
+			  w: 200,
+			  h: 200,
+			  margin: margin,
+			  maxValue: 1,
+			  levels: 3,
+			  roundStrokes: true,
+			  color: color
+			};
+
+			// inital TableauLib
+			var TBLib = new TableauLib();
+			
+		</script>
+	</body>
+</html>
